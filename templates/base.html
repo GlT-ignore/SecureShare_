@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SecureShare - {% block title %}{% endblock %}</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Three.js for 3D effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6366F1;
+            --secondary: #4F46E5;
+            --accent: #EC4899;
+            --dark: #1E1B4B;
+            --light: #EEF2FF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --background: #000212;
+            --card-bg: rgba(30, 27, 75, 0.5);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--background);
+            color: var(--light);
+            line-height: 1.2;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .gradient-sphere {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .sphere-1 {
+            top: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle at center, var(--primary), transparent 70%);
+            animation: floatAnimation 20s infinite alternate;
+        }
+
+        .sphere-2 {
+            bottom: -20%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle at center, var(--accent), transparent 70%);
+            animation: floatAnimation 25s infinite alternate-reverse;
+        }
+
+        @keyframes floatAnimation {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(100px, 50px) rotate(180deg); }
+        }
+
+        /* Modern Navbar */
+        .navbar {
+            background: rgba(0, 2, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            padding: 1.5rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--light) !important;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-icon {
+            font-size: 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(99, 102, 241, 0.1),
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Neon Buttons */
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            color: var(--light);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+
+        /* File Cards with Cyber Theme */
+        .file-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(99, 102, 241, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        /* Main Container */
+        .main-container {
+            position: relative;
+            padding: 2rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        /* Cyber Footer */
+        .footer {
+            background: linear-gradient(180deg, transparent, rgba(30, 27, 75, 0.95));
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 1.5rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .footer-brand {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-divider {
+            color: rgba(238, 242, 255, 0.3);
+        }
+
+        .footer-powered {
+            color: rgba(238, 242, 255, 0.7);
+        }
+
+        /* Add margin to main container to prevent content overlap */
+        .main-container {
+            margin-bottom: 5rem;
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .cyber-loader {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .cyber-loader::before,
+        .cyber-loader::after {
+            content: '';
+            position: absolute;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: cyberpulse 2s ease-out infinite;
+        }
+
+        .cyber-loader::after {
+            animation-delay: -1s;
+        }
+
+        @keyframes cyberpulse {
+            0% {
+                top: 40px;
+                left: 40px;
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                top: 0;
+                left: 0;
+                width: 80px;
+                height: 80px;
+                opacity: 0;
+            }
+        }
+
+        /* Update navbar container */
+        .navbar .container {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            max-width: 1400px;
+        }
+
+        /* Update footer container */
+        .footer .container {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            max-width: 1400px;
+        }
+
+        /* Responsive margins */
+        @media (max-width: 768px) {
+            .main-container,
+            .navbar .container,
+            .footer .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* Add these styles to the existing styles section */
+        .user-info {
+            background: rgba(30, 27, 75, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .username {
+            color: var(--light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .username i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .logout-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+            color: var(--light);
+        }
+
+        .logout-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Make navbar sticky */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                margin-top: 1rem;
+            }
+            
+            .user-info {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .toast {
+            background: rgba(30, 27, 75, 0.95);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            min-width: 300px;
+            animation: slideIn 0.3s ease forwards;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--light);
+        }
+
+        .toast i {
+            font-size: 1.25rem;
+        }
+
+        .toast-success {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .toast-success i {
+            color: #10B981;
+        }
+
+        .toast-error {
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .toast-error i {
+            color: #EF4444;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        .toast.hide {
+            animation: slideOut 0.3s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add animated background -->
+    <div class="bg-animation">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+    </div>
+
+    <!-- Add loading screen -->
+    <div class="loading-overlay">
+        <div class="cyber-loader"></div>
+    </div>
+
+    <!-- Update navbar with modern design -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <i class="fas fa-shield-halved brand-icon"></i>
+                SecureShare_
+            </a>
+            {% if session.get('username') %}
+            <div class="navbar-nav ms-auto d-flex align-items-center">
+                <div class="user-info me-4">
+                    <span class="username">
+                        <i class="fas fa-user-circle me-2"></i>
+                        {{ session.username }}
+                    </span>
+                </div>
+                <a class="logout-btn" href="{{ url_for('logout') }}">
+                    <i class="fas fa-sign-out-alt me-2"></i>
+                    Logout
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Main content with animations -->
+    <div class="main-container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Modern footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-text">
+                <span class="footer-brand">© 2024 SecureShare_</span>
+                <span class="footer-divider">|</span>
+                <span class="footer-powered">Secure File Sharing Made Simple</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add GSAP animations -->
+    <script>
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            gsap.to('.loading-overlay', {
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                    document.querySelector('.loading-overlay').style.display = 'none';
+                }
+            });
+        });
+
+        // Scroll animations
+        gsap.utils.toArray('.card').forEach(element => {
+            gsap.from(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top bottom-=100',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            });
+        });
+
+        // Parallax effect for gradient spheres
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            gsap.to('.sphere-1', {
+                x: 50 * (x - 0.5),
+                y: 50 * (y - 0.5),
+                duration: 1
+            });
+            
+            gsap.to('.sphere-2', {
+                x: -50 * (x - 0.5),
+                y: -50 * (y - 0.5),
+                duration: 1
+            });
+        });
+    </script>
+
+    <!-- Add this right before the closing </body> tag -->
+    <div class="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="toast toast-{{ category }} show" role="alert">
+                        <div class="toast-content">
+                            <i class="fas {% if category == 'success' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %}"></i>
+                            <span>{{ message }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        // Auto-hide toasts after 5 seconds
+        document.addEventListener('DOMContentLoaded', () => {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach(toast => {
+                setTimeout(() => {
+                    toast.classList.add('hide');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
+
+    <!-- Add this where you want the flash messages to appear -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html> 

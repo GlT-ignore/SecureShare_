@@ -1,0 +1,33 @@
+label {
+    margin:8px 0px;
+    position:relative;
+    display:inline-block;
+  }
+    
+  span {
+      font-size: 1.5rem;
+    padding:7px;
+    pointer-events: none;
+    position:absolute;
+    left:0;
+    top:0;
+    transition: 0.05s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity:0.7;
+  }
+  
+  input {
+    padding:7px;
+  }
+  
+  input:focus + span, input:not(:placeholder-shown) + span {
+    opacity:1;
+    transform: scale(0.77) translateY(-90%) translateX(-16%);
+  }
+  
+  /* For IE Browsers*/
+  input:focus + span, input:not(:-ms-input-placeholder) + span {
+    opacity:1;
+    transform: scale(0.9) translateY(-80%) translateX(-15px);
+  }

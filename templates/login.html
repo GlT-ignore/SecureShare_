@@ -1,0 +1,394 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-container page-content">
+    <div class="login-card">
+        <div class="cyber-circle circle-1"></div>
+        <div class="cyber-circle circle-2"></div>
+
+        <div class="login-header">
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Enter your credentials to access your secure vault</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('login') }}" class="login-form">
+            <div class="form-floating">
+                <i class="fas fa-user input-icon"></i>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="username" 
+                    name="username" 
+                    placeholder=" "
+                    required
+                >
+                <label for="username">Username</label>
+            </div>
+
+            <div class="form-floating">
+                <i class="fas fa-lock input-icon"></i>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="password" 
+                    name="password" 
+                    placeholder=" "
+                    required
+                >
+                <label for="password">Password</label>
+            </div>
+
+            <button type="submit" class="btn btn-login">
+                <i class="fas fa-sign-in-alt me-2"></i>Login
+            </button>
+
+            <div class="signup-link">
+                Don't have an account? <a href="{{ url_for('signup') }}">Create one</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 140px);
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+        background: rgba(30, 27, 75, 0.8);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        padding: 3rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+        z-index: 2;
+    }
+
+    .main-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .navbar {
+        z-index: 20;
+    }
+
+    .footer {
+        z-index: 20;
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .login-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+    }
+
+    .login-subtitle {
+        color: var(--light);
+        opacity: 0.8;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0 auto;
+        max-width: 260px;
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+    }
+
+    .form-floating {
+        position: relative;
+        background: rgba(30, 27, 75, 0.9);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        overflow: visible;
+        padding-top: 0.5rem;
+    }
+
+    .form-floating input {
+        background: transparent !important;
+        border: none !important;
+        color: var(--light) !important;
+        height: 56px;
+        padding: 0.75rem 1rem 0.75rem 3.5rem !important;
+        font-size: 1rem;
+        width: 100%;
+        line-height: 1.5;
+    }
+
+    .form-floating input:focus {
+        box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
+    }
+
+    .form-floating label {
+        padding: 0.75rem 1rem 0.75rem 3.5rem;
+        color: rgba(238, 242, 255, 0.8);
+        font-size: 0.9rem;
+        transform-origin: left top;
+        transition: all 0.2s ease;
+        pointer-events: none;
+        background: none !important;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        height: auto;
+        transform: translateY(-80%) scale(0.85);
+        color: var(--primary);
+        opacity: 1;
+        padding-left: 3.5rem;
+        background: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        z-index: 3;
+    }
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 1.5rem;
+        top: 55%;
+        transform: translateY(-50%);
+        color: var(--primary);
+        font-size: 1.1rem;
+        pointer-events: none;
+        opacity: 0.8;
+        z-index: 2;
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 12px;
+        color: var(--light);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+    }
+
+    .signup-link {
+        text-align: center;
+        color: var(--light);
+        opacity: 0.9;
+        font-size: 0.95rem;
+        margin-top: 1.5rem;
+    }
+
+    .cyber-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--primary);
+        filter: blur(80px);
+        z-index: -1;
+        opacity: 0.15;
+        transition: all 0.8s ease;
+    }
+
+    .circle-1 {
+        width: 200px;
+        height: 200px;
+        top: -100px;
+        right: -100px;
+    }
+
+    .circle-2 {
+        width: 250px;
+        height: 250px;
+        bottom: -125px;
+        left: -125px;
+        background: var(--accent);
+    }
+
+    .login-card:hover .circle-1 {
+        transform: scale(1.2) translateX(-20px);
+    }
+
+    .login-card:hover .circle-2 {
+        transform: scale(1.2) translateX(20px);
+    }
+
+    .bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    @keyframes floatAnimation {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        100% { transform: translate(50px, 25px) rotate(90deg); }
+    }
+
+    .sphere-1 {
+        animation: floatAnimation 30s infinite alternate ease-in-out;
+    }
+
+    .sphere-2 {
+        animation: floatAnimation 40s infinite alternate-reverse ease-in-out;
+    }
+
+    .btn-login {
+        transition: all 0.3s ease;
+    }
+
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .login-card {
+            margin: 1rem;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .login-title {
+            font-size: 2.25rem;
+        }
+
+        .login-subtitle {
+            font-size: 1rem;
+        }
+    }
+
+    .form-floating label::before,
+    .form-floating label::after {
+        display: none !important;
+    }
+
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label,
+    .form-floating>.form-select~label {
+        background: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    .form-floating input:-webkit-autofill ~ label {
+        background: none !important;
+    }
+
+    .form-floating:hover,
+    .form-floating:focus-within {
+        border-color: var(--primary);
+        background: rgba(30, 27, 75, 1);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Only handle login-specific animations
+        const tl = gsap.timeline({
+            paused: true,
+            defaults: { ease: 'power2.out' }
+        });
+
+        tl.from('.login-card', {
+            duration: 1.2,
+            y: 30,
+            opacity: 0,
+            clearProps: 'all'
+        })
+        .from('.login-title, .login-subtitle', {
+            duration: 1,
+            y: 20,
+            opacity: 0,
+            stagger: 0.2,
+            clearProps: 'all'
+        }, '-=0.8')
+        .from('.form-floating', {
+            duration: 0.8,
+            y: 20,
+            opacity: 0,
+            stagger: 0.15,
+            clearProps: 'all'
+        }, '-=0.6')
+        .from('.btn-login, .signup-link', {
+            duration: 0.8,
+            y: 20,
+            opacity: 0,
+            stagger: 0.15,
+            clearProps: 'all'
+        }, '-=0.4');
+
+        // Play timeline when loading is complete
+        window.addEventListener('load', () => {
+            tl.play();
+        });
+
+        // Input animations
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                gsap.to(input, {
+                    scale: 1.02,
+                    duration: 0.2,
+                    ease: 'power2.out'
+                });
+            });
+
+            input.addEventListener('blur', () => {
+                gsap.to(input, {
+                    scale: 1,
+                    duration: 0.2,
+                    ease: 'power2.out',
+                    clearProps: 'all'
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}

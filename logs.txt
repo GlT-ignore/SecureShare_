@@ -1,0 +1,329 @@
+[2024-12-14 15:27:04] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-14 15:28:52] Signup: New user account created: Chanikya
+[2024-12-14 15:28:59] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-14 15:28:59] Files Retrieved: User Chanikya accessed their received files
+[2024-12-14 15:28:59] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-14 15:30:07] Signup: New user account created: Prajwal
+[2024-12-14 15:30:15] Login: User 'Prajwal' logged in successfully with role 'user'
+[2024-12-14 15:30:15] Files Retrieved: User Prajwal accessed their received files
+[2024-12-14 15:30:15] Files Retrieved: User Prajwal accessed their sent files
+[2024-12-14 15:31:38] Upload Error: Error uploading file: [Errno 2] No such file or directory: 'uploads\\Testing.txt'
+[2024-12-14 15:31:38] Files Retrieved: User Prajwal accessed their received files
+[2024-12-14 15:31:38] Files Retrieved: User Prajwal accessed their sent files
+[2024-12-14 15:31:49] Upload Error: Error uploading file: [Errno 2] No such file or directory: 'uploads\\Testing.txt'
+[2024-12-14 15:31:49] Files Retrieved: User Prajwal accessed their received files
+[2024-12-14 15:31:49] Files Retrieved: User Prajwal accessed their sent files
+[2024-12-14 15:32:04] Upload Error: Error uploading file: [Errno 2] No such file or directory: 'uploads\\Testing.txt'
+[2024-12-14 15:32:04] Files Retrieved: User Prajwal accessed their received files
+[2024-12-14 15:32:04] Files Retrieved: User Prajwal accessed their sent files
+[2024-12-14 15:32:44] Upload Error: Error uploading file: [Errno 2] No such file or directory: 'uploads\\Testing.txt'
+[2024-12-14 15:32:44] Files Retrieved: User Prajwal accessed their received files
+[2024-12-14 15:32:44] Files Retrieved: User Prajwal accessed their sent files
+[2024-12-14 15:32:56] Upload Error: Error uploading file: [Errno 2] No such file or directory: 'uploads\\Testing.txt'
+[2024-12-14 15:32:56] Files Retrieved: User Prajwal accessed their received files
+[2024-12-14 15:32:56] Files Retrieved: User Prajwal accessed their sent files
+[2024-12-14 15:33:07] Logout: User 'Prajwal' logged out
+[2024-12-14 15:33:29] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-14 15:33:29] Files Retrieved: User Chanikya accessed their received files
+[2024-12-14 15:33:29] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-14 15:33:40] Upload Error: Error uploading file: [Errno 2] No such file or directory: 'uploads\\Testing.txt'
+[2024-12-14 15:33:40] Files Retrieved: User Chanikya accessed their received files
+[2024-12-14 15:33:40] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-14 15:35:49] Upload Error: Error uploading file: [Errno 2] No such file or directory: 'uploads\\Testing.txt'
+[2024-12-14 15:35:50] Files Retrieved: User Chanikya accessed their received files
+[2024-12-14 15:35:50] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-14 15:38:03] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-14 15:40:03] File Signature: File: Testing.txt, Signature: 0f419451190e11d7775fa74024ec72cdc7ac38db4d8f7ce5041c5ed107c8acb921a990618a5da6980833820ee9c19deec79ce8d0f42d3e44
+[2024-12-14 15:40:03] File Upload: File ID: 1, From: admin, To: Prajwal, Filename: Testing.txt, Filesize: 16 bytes
+[2024-12-14 15:40:03] Upload Error: Error uploading file: [WinError 32] The process cannot access the file because it is being used by another process: 'uploads\\Testing.txt'
+[2024-12-14 15:40:03] Files Retrieved: User admin accessed their received files
+[2024-12-14 15:40:03] Files Retrieved: User admin accessed their sent files
+[2024-12-14 15:40:54] File Signature: File: test.txt, Signature: 92968a98de938e880d6477f4809b11a75bc84dcf67deca000c0f4eb23329b26d495b1693438830fbcbf730eb9a238c94610451861b896e26
+[2024-12-14 15:40:54] File Upload: File ID: 2, From: admin, To: Prajwal, Filename: test.txt, Filesize: 0 bytes
+[2024-12-14 15:40:54] Upload Error: Error uploading file: [WinError 32] The process cannot access the file because it is being used by another process: 'uploads\\test.txt'
+[2024-12-14 15:40:54] Files Retrieved: User admin accessed their received files
+[2024-12-14 15:40:54] Files Retrieved: User admin accessed their sent files
+[2024-12-14 15:43:53] Failed Login: Failed login attempt for username 'admin'
+[2024-12-14 15:44:02] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-15 12:33:04] User Creation: New user account created: Mohan
+[2024-12-15 12:33:17] Login: User 'Mohan' logged in successfully with role 'user'
+[2024-12-15 12:33:17] Files Retrieved: User Mohan accessed their received files
+[2024-12-15 12:33:17] Files Retrieved: User Mohan accessed their sent files
+[2024-12-15 12:34:13] Database Error: Failed to insert file: 1153 (08S01): Got a packet bigger than 'max_allowed_packet' bytes
+[2024-12-15 12:34:13] Files Retrieved: User Mohan accessed their received files
+[2024-12-15 12:34:13] Files Retrieved: User Mohan accessed their sent files
+[2024-12-15 12:34:32] Upload Error: Failed to upload file: Recipient Chanikyasdfsd does not exist
+[2024-12-15 12:34:32] Files Retrieved: User Mohan accessed their received files
+[2024-12-15 12:34:32] Files Retrieved: User Mohan accessed their sent files
+[2024-12-15 12:34:45] File Upload: File ID: 15, From: Mohan, To: Chanikya, Filename: Chanikya Gajjarapu_Arc.png, Filesize: 122957 bytes
+[2024-12-15 12:34:45] Files Retrieved: User Mohan accessed their received files
+[2024-12-15 12:34:45] Files Retrieved: User Mohan accessed their sent files
+[2024-12-15 12:34:51] Logout: User 'Mohan' logged out
+[2024-12-15 12:34:58] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-15 12:34:58] Files Retrieved: User Chanikya accessed their received files
+[2024-12-15 12:34:58] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-15 12:35:07] File Download: File ID: 15, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-15 12:35:07] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_15.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_15.png'
+[2024-12-15 12:35:07] File Download: File ID: 15, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-15 12:35:07] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_15.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_15.png'
+[2024-12-15 12:35:38] Logout: User 'Chanikya' logged out
+[2024-12-15 12:35:48] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-15 12:36:40] Logout: User 'admin' logged out
+[2024-12-15 12:36:48] Login: User 'Tester' logged in successfully with role 'user'
+[2024-12-15 12:36:48] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:36:49] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:04] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:04] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:05] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:05] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:05] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:05] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:05] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:05] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:06] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:06] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:07] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:07] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:07] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:07] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:07] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:07] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:08] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:08] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:08] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:09] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:09] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:09] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:09] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:09] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:09] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:10] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:10] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:11] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:11] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:11] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:13] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:13] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:17] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:17] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:17] Files Retrieved: User Tester accessed their received files
+[2024-12-15 12:37:18] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:18] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:18] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 12:37:27] Logout: User 'Tester' logged out
+[2024-12-15 12:42:26] Files Retrieved: User mohan accessed their received files
+[2024-12-15 12:42:26] Files Retrieved: User mohan accessed their sent files
+[2024-12-15 12:42:26] Files Retrieved: User mohan accessed their received files
+[2024-12-15 12:42:26] Files Retrieved: User mohan accessed their sent files
+[2024-12-15 12:42:38] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-15 12:42:38] Files Retrieved: User Chanikya accessed their received files
+[2024-12-15 12:42:38] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-15 17:46:18] Failed Login: Failed login attempt for username 'sdfhgjklh'
+[2024-12-15 17:46:30] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-15 17:46:30] Files Retrieved: User Chanikya accessed their received files
+[2024-12-15 17:46:30] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-15 17:46:46] Upload Error: Failed to upload file: Recipient Vikranth does not exist
+[2024-12-15 17:46:46] Files Retrieved: User Chanikya accessed their received files
+[2024-12-15 17:46:46] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-15 17:47:00] File Upload: File ID: 16, From: Chanikya, To: Tester, Filename: Screenshot 2024-02-02 223131.png, Filesize: 781462 bytes
+[2024-12-15 17:47:00] Files Retrieved: User Chanikya accessed their received files
+[2024-12-15 17:47:00] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-15 17:47:09] Logout: User 'Chanikya' logged out
+[2024-12-15 17:47:15] Login: User 'Tester' logged in successfully with role 'user'
+[2024-12-15 17:47:15] Files Retrieved: User Tester accessed their received files
+[2024-12-15 17:47:15] Files Retrieved: User Tester accessed their sent files
+[2024-12-15 17:47:26] File Download: File ID: 16, Filename: Screenshot 2024-02-02 223131.png, Downloaded by: Tester
+[2024-12-15 17:47:26] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_16.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_16.png'
+[2024-12-15 17:47:27] File Download: File ID: 16, Filename: Screenshot 2024-02-02 223131.png, Downloaded by: Tester
+[2024-12-15 17:47:27] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_16.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_16.png'
+[2024-12-15 17:48:23] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Tester
+[2024-12-15 17:48:23] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-15 17:48:23] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Tester
+[2024-12-15 17:48:23] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-15 17:49:47] Logout: User 'Tester' logged out
+[2024-12-15 17:50:09] User Creation: New user account created: Vikranth
+[2024-12-15 17:50:19] Login: User 'Vikranth' logged in successfully with role 'user'
+[2024-12-15 17:50:19] Files Retrieved: User Vikranth accessed their received files
+[2024-12-15 17:50:19] Files Retrieved: User Vikranth accessed their sent files
+[2024-12-15 17:50:37] File Upload: File ID: 17, From: Vikranth, To: Mohan, Filename: Screenshot 2024-01-24 181534.png, Filesize: 81642 bytes
+[2024-12-15 17:50:37] Files Retrieved: User Vikranth accessed their received files
+[2024-12-15 17:50:37] Files Retrieved: User Vikranth accessed their sent files
+[2024-12-15 17:50:40] Logout: User 'Vikranth' logged out
+[2024-12-15 17:51:04] Failed Login: Failed login attempt for username 'admin'
+[2024-12-15 17:51:12] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-15 17:51:46] File Deletion: File ID 17 deleted by admin admin
+[2024-12-15 17:51:50] Logout: User 'admin' logged out
+[2024-12-15 17:52:00] Failed Login: Failed login attempt for username 'Mohan'
+[2024-12-15 17:52:05] Login: User 'Mohan' logged in successfully with role 'user'
+[2024-12-15 17:52:05] Files Retrieved: User Mohan accessed their received files
+[2024-12-15 17:52:05] Files Retrieved: User Mohan accessed their sent files
+[2024-12-15 17:53:55] Logout: User 'Mohan' logged out
+[2024-12-15 17:54:01] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-15 17:58:23] Logout: User 'admin' logged out
+[2024-12-16 10:23:20] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 10:23:20] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 10:23:20] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 10:23:46] Upload Error: Failed to upload file: Recipient alsjfdkh;a does not exist
+[2024-12-16 10:23:46] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 10:23:46] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 10:24:00] File Upload: File ID: 18, From: Chanikya, To: Vikranth, Filename: Screenshot 2024-02-02 223131.png, Filesize: 781462 bytes
+[2024-12-16 10:24:00] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 10:24:01] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 10:24:18] Logout: User 'Chanikya' logged out
+[2024-12-16 10:24:24] Login: User 'Vikranth' logged in successfully with role 'user'
+[2024-12-16 10:24:24] Files Retrieved: User Vikranth accessed their received files
+[2024-12-16 10:24:24] Files Retrieved: User Vikranth accessed their sent files
+[2024-12-16 10:24:36] File Download: File ID: 18, Filename: Screenshot 2024-02-02 223131.png, Downloaded by: Vikranth
+[2024-12-16 10:24:36] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_18.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_18.png'
+[2024-12-16 10:24:37] File Download: File ID: 18, Filename: Screenshot 2024-02-02 223131.png, Downloaded by: Vikranth
+[2024-12-16 10:24:37] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_18.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_18.png'
+[2024-12-16 10:25:04] Logout: User 'Vikranth' logged out
+[2024-12-16 10:25:14] Failed Login: Failed login attempt for username 'Chanikta'
+[2024-12-16 10:25:25] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 10:25:25] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 10:25:25] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 10:25:32] File Upload: File ID: 19, From: Chanikya, To: admin, Filename: Screenshot 2024-01-26 195652.png, Filesize: 74552 bytes
+[2024-12-16 10:25:32] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 10:25:32] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 10:25:36] Logout: User 'Chanikya' logged out
+[2024-12-16 10:25:44] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-16 10:26:16] File Deletion: File ID 19 deleted by admin admin
+[2024-12-16 10:26:22] File Deletion: File ID 18 deleted by admin admin
+[2024-12-16 10:26:31] User Deletion: User Mohan deleted by admin admin
+[2024-12-16 10:26:35] Logout: User 'admin' logged out
+[2024-12-16 10:26:49] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 10:26:49] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 10:26:49] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 10:26:55] Logout: User 'Chanikya' logged out
+[2024-12-16 10:27:05] Login: User 'Vikranth' logged in successfully with role 'user'
+[2024-12-16 10:27:05] Files Retrieved: User Vikranth accessed their received files
+[2024-12-16 10:27:05] Files Retrieved: User Vikranth accessed their sent files
+[2024-12-16 10:27:34] Logout: User 'Vikranth' logged out
+[2024-12-16 10:36:10] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-16 10:37:03] Logout: User 'admin' logged out
+[2024-12-16 10:37:12] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 10:37:13] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 10:37:13] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 10:38:20] File Upload: File ID: 20, From: Chanikya, To: Vikranth, Filename: Testing.txt, Filesize: 16 bytes
+[2024-12-16 10:38:20] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 10:38:20] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 10:38:48] Logout: User 'Chanikya' logged out
+[2024-12-16 10:38:58] Login: User 'Vikranth' logged in successfully with role 'user'
+[2024-12-16 10:38:58] Files Retrieved: User Vikranth accessed their received files
+[2024-12-16 10:38:58] Files Retrieved: User Vikranth accessed their sent files
+[2024-12-16 10:40:56] Logout: User 'Vikranth' logged out
+[2024-12-16 11:17:13] Failed Login: Failed login attempt for username 'Chanikya'
+[2024-12-16 11:17:26] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 11:17:26] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 11:17:26] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 11:17:48] Upload Error: Failed to upload file: Recipient hgjshkd does not exist
+[2024-12-16 11:17:48] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 11:17:48] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 11:18:16] File Upload: File ID: 21, From: Chanikya, To: Vikranth, Filename: Testing.txt, Filesize: 16 bytes
+[2024-12-16 11:18:16] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 11:18:16] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 11:18:39] File Download: File ID: 8, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 11:18:40] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_8.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_8.png'
+[2024-12-16 11:18:40] File Download: File ID: 8, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 11:18:40] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_8.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_8.png'
+[2024-12-16 11:18:51] Logout: User 'Chanikya' logged out
+[2024-12-16 11:19:01] Failed Login: Failed login attempt for username 'admin'
+[2024-12-16 11:19:10] Failed Login: Failed login attempt for username 'admin'
+[2024-12-16 11:19:18] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-16 11:19:48] User Deletion: User Prajwal deleted by admin admin
+[2024-12-16 11:19:55] Logout: User 'admin' logged out
+[2024-12-16 11:20:03] Failed Login: Failed login attempt for username 'Prajwal'
+[2024-12-16 11:20:22] Login: User 'Vikranth' logged in successfully with role 'user'
+[2024-12-16 11:20:23] Files Retrieved: User Vikranth accessed their received files
+[2024-12-16 11:20:23] Files Retrieved: User Vikranth accessed their sent files
+[2024-12-16 11:20:37] File Download: File ID: 21, Filename: Testing.txt, Downloaded by: Vikranth
+[2024-12-16 11:20:37] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_21.txt: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_21.txt'
+[2024-12-16 11:20:38] File Download: File ID: 21, Filename: Testing.txt, Downloaded by: Vikranth
+[2024-12-16 11:20:38] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_21.txt: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_21.txt'
+[2024-12-16 11:21:20] Logout: User 'Vikranth' logged out
+[2024-12-16 11:21:26] Login: User 'Tester' logged in successfully with role 'user'
+[2024-12-16 11:21:26] Files Retrieved: User Tester accessed their received files
+[2024-12-16 13:45:39] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-16 13:47:18] Logout: User 'admin' logged out
+[2024-12-16 13:47:29] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 13:47:29] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 13:47:30] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 13:47:31] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 13:47:31] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 13:47:32] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 13:47:32] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 13:47:32] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 13:47:33] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 13:47:51] File Download: File ID: 16, Filename: Screenshot 2024-02-02 223131.png, Downloaded by: Chanikya
+[2024-12-16 13:47:51] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_16.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_16.png'
+[2024-12-16 13:47:51] File Download: File ID: 16, Filename: Screenshot 2024-02-02 223131.png, Downloaded by: Chanikya
+[2024-12-16 13:47:51] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_16.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_16.png'
+[2024-12-16 13:47:52] File Download: File ID: 16, Filename: Screenshot 2024-02-02 223131.png, Downloaded by: Chanikya
+[2024-12-16 13:47:52] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_16.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_16.png'
+[2024-12-16 13:49:03] Logout: User 'Chanikya' logged out
+[2024-12-16 13:52:08] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 13:52:08] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 13:52:08] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 13:52:19] File Download: File ID: 21, Filename: Testing.txt, Downloaded by: Chanikya
+[2024-12-16 13:52:19] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_21.txt: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_21.txt'
+[2024-12-16 13:52:19] File Download: File ID: 21, Filename: Testing.txt, Downloaded by: Chanikya
+[2024-12-16 13:52:19] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_21.txt: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_21.txt'
+[2024-12-16 13:52:21] File Download: File ID: 21, Filename: Testing.txt, Downloaded by: Chanikya
+[2024-12-16 13:52:21] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_21.txt: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_21.txt'
+[2024-12-16 13:52:26] Logout: User 'Chanikya' logged out
+[2024-12-16 13:52:32] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-16 13:53:40] Logout: User 'admin' logged out
+[2024-12-16 13:53:47] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 13:53:47] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 13:53:47] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 13:54:42] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 13:54:42] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-16 13:54:42] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 13:54:42] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-16 13:54:47] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 13:54:47] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-16 13:54:53] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 13:54:53] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-16 13:55:06] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 13:55:06] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-16 13:55:08] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 13:55:08] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-16 13:55:09] File Download: File ID: 13, Filename: Chanikya Gajjarapu_Arc.png, Downloaded by: Chanikya
+[2024-12-16 13:55:09] Cleanup Error: Error removing temp file E:\IS LAB PROJECT\IS LAB\temp\decrypted_file_13.png: [WinError 32] The process cannot access the file because it is being used by another process: 'E:\\IS LAB PROJECT\\IS LAB\\temp\\decrypted_file_13.png'
+[2024-12-16 13:55:17] Logout: User 'Chanikya' logged out
+[2024-12-16 13:55:23] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-16 14:06:14] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-16 14:07:54] Logout: User 'admin' logged out
+[2024-12-16 14:08:04] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-16 14:08:04] Files Retrieved: User Chanikya accessed their received files
+[2024-12-16 14:08:04] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-16 14:10:18] Logout: User 'Chanikya' logged out
+[2024-12-16 14:10:24] Login: User 'Vikranth' logged in successfully with role 'user'
+[2024-12-16 14:10:24] Files Retrieved: User Vikranth accessed their received files
+[2024-12-16 14:10:24] Files Retrieved: User Vikranth accessed their sent files
+[2024-12-17 14:18:49] Failed Login: Failed login attempt for username 'admin'
+[2024-12-17 14:18:58] Failed Login: Failed login attempt for username 'admin'
+[2024-12-17 14:19:05] Failed Login: Failed login attempt for username 'admin'
+[2024-12-17 14:19:15] Failed Login: Failed login attempt for username 'Chanikya'
+[2024-12-17 14:19:47] Failed Login: Failed login attempt for username 'admin'
+[2024-12-17 14:19:56] Failed Login: Failed login attempt for username 'Chanikya'
+[2024-12-17 14:32:23] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-17 14:32:40] Logout: User 'admin' logged out
+[2024-12-17 14:32:59] Login: User 'admin' logged in successfully with role 'admin'
+[2024-12-17 14:35:01] Logout: User 'admin' logged out
+[2024-12-17 14:35:21] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-17 14:35:21] Files Retrieved: User Chanikya accessed their received files
+[2024-12-17 14:35:22] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-17 14:36:06] Upload Error: Invalid file type: .png
+[2024-12-17 14:36:12] Logout: User 'Chanikya' logged out
+[2024-12-17 14:36:21] Login: User 'Chanikya' logged in successfully with role 'user'
+[2024-12-17 14:36:22] Files Retrieved: User Chanikya accessed their received files
+[2024-12-17 14:36:22] Files Retrieved: User Chanikya accessed their sent files
+[2024-12-17 14:36:43] Upload Error: Invalid file type: .png
+[2024-12-17 14:36:47] Logout: User 'Chanikya' logged out
+[2024-12-17 14:37:36] Login: User 'Vikranth' logged in successfully with role 'user'
+[2024-12-17 14:37:36] Files Retrieved: User Vikranth accessed their received files
+[2024-12-17 14:37:36] Files Retrieved: User Vikranth accessed their sent files
+[2024-12-17 14:37:49] Upload Error: Invalid file type: .png
+[2024-12-17 14:38:00] Upload Error: Invalid file type: .png
+[2024-12-17 14:38:03] Logout: User 'Vikranth' logged out

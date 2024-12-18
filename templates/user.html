@@ -1,0 +1,750 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- File Upload Section -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    <i class="fas fa-upload text-primary me-2"></i>
+                    Upload New File
+                </h4>
+                
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">Select Recipient</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                name="username" 
+                                placeholder="Recipient's username" 
+                                required
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Choose File</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="file" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fas fa-paper-plane me-2"></i>Send File
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Received Files Section -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <i class="fas fa-inbox text-primary me-2"></i>
+                    Received Files
+                </h4>
+                
+                <div class="received-files-container">
+                    {% if files %}
+                        {% for file in files %}
+                        <div class="file-card fade-in">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-file file-icon"></i>
+                                <div>
+                                    <h6 class="mb-1">{{ file[2] }}</h6>
+                                    <small class="text-muted">
+                                        From: <span class="sender-name">{{ file[1].strip() }}</span> | {{ file[7].strftime('%Y-%m-%d %H:%M') }}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                {% if file[6] %}
+                                <i class="fas fa-check-circle verified-badge me-3" title="Signature Verified"></i>
+                                {% endif %}
+                                <a href="{{ url_for('download_file', file_id=file[0]) }}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-download me-1"></i>Download
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-inbox fa-3x mb-3"></i>
+                            <p>No files received yet</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sent Files Section -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <i class="fas fa-paper-plane text-primary me-2"></i>
+                    Sent Files
+                </h4>
+                
+                {% if sent_files %}
+                    <div class="table-container">
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">File Name</th>
+                                    <th scope="col">Recipient</th>
+                                    <th scope="col">Date Sent</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for file in sent_files %}
+                                <tr>
+                                    <td>
+                                        <i class="fas fa-file me-2 text-primary"></i>
+                                        {{ file[2] }}
+                                    </td>
+                                    <td>{{ file[1] }}</td>
+                                    <td>{{ file[7].strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>{{ (file[8] / 1024)|round(1) }} KB</td>
+                                    <td>
+                                        {% if file[6] %}
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check-circle me-1"></i>Verified
+                                        </span>
+                                        {% else %}
+                                        <span class="badge bg-warning">
+                                            <i class="fas fa-exclamation-circle me-1"></i>Pending
+                                        </span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('download_file', file_id=file[0]) }}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-download me-1"></i>Download
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center text-muted py-4">
+                        <i class="fas fa-paper-plane fa-3x mb-3"></i>
+                        <p>No files sent yet</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Update existing styles */
+
+    /* Adjust main container spacing */
+    .row {
+        margin-top: -2rem; /* Reduce top space */
+    }
+
+    /* Card styling */
+    .card {
+        background: rgba(30, 27, 75, 0.8);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        backdrop-filter: blur(20px);
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-body {
+        padding: 1.5rem; /* Reduce padding */
+    }
+
+    .card-title {
+        color: var(--light);
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem; /* Reduce bottom margin */
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Form group spacing */
+    .mb-4 {
+        margin-bottom: 1rem !important; /* Reduce spacing between sections */
+    }
+
+    .mb-3 {
+        margin-bottom: 1rem !important; /* Reduce form group spacing */
+    }
+
+    /* File cards spacing */
+    .file-card {
+        padding: 1rem; /* Reduce padding */
+        margin-bottom: 0.75rem; /* Reduce spacing between cards */
+    }
+
+    /* Table spacing */
+    .table {
+        margin-bottom: 0; /* Remove bottom margin from table */
+    }
+
+    .table td, .table th {
+        padding: 0.75rem; /* Reduce cell padding */
+    }
+
+    /* Update card title and text colors */
+    .card-title {
+        color: var(--light);
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Form labels and text */
+    .form-label {
+        color: var(--light);
+        opacity: 0.9;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Input text color */
+    .form-control {
+        background: rgba(30, 27, 75, 0.9) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: var(--light) !important;
+    }
+
+    .form-control:focus {
+        background: rgba(30, 27, 75, 1) !important;
+        border-color: var(--primary);
+        box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
+        color: var(--light);
+    }
+
+    /* File cards */
+    .file-card {
+        background: rgba(30, 27, 75, 0.8);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+
+    .file-card h6 {
+        color: var(--light);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .text-muted {
+        color: rgba(238, 242, 255, 0.7) !important;
+    }
+
+    /* Table styles */
+    .table {
+        color: var(--light);
+        background: transparent;
+    }
+
+    .table thead th {
+        background: rgba(30, 27, 75, 0.9);
+        color: var(--primary);
+        border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+        padding: 1rem;
+        font-weight: 600;
+    }
+
+    .table tbody tr {
+        background: rgba(30, 27, 75, 0.5);
+        border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .table tbody tr:hover {
+        background: rgba(30, 27, 75, 0.8);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+    }
+
+    .table tbody td {
+        color: var(--light);
+        padding: 1rem;
+        vertical-align: middle;
+    }
+
+    /* Icons */
+    .file-icon {
+        color: var(--primary);
+        font-size: 1.25rem;
+        margin-right: 1rem;
+    }
+
+    .verified-badge {
+        color: var(--success);
+    }
+
+    /* Empty state messages */
+    .text-center.text-muted {
+        padding: 3rem 0;
+        color: rgba(238, 242, 255, 0.7) !important;
+    }
+
+    .text-center.text-muted i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Input group text */
+    .input-group-text {
+        background: rgba(30, 27, 75, 0.9);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: var(--primary);
+    }
+
+    /* Badge styles */
+    .badge {
+        padding: 0.5rem 0.75rem;
+        font-weight: 500;
+    }
+
+    .bg-success {
+        background: rgba(16, 185, 129, 0.2) !important;
+        color: var(--success);
+    }
+
+    .bg-warning {
+        background: rgba(245, 158, 11, 0.2) !important;
+        color: var(--warning);
+    }
+
+    /* Input fields and form controls */
+    .input-group input.form-control {
+        background: rgba(30, 27, 75, 0.9) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: var(--light) !important;
+        height: 45px;
+    }
+
+    .input-group input.form-control:focus {
+        background: rgba(30, 27, 75, 1) !important;
+        border-color: var(--primary);
+        box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Input group text and icons */
+    .input-group-text {
+        background: rgba(30, 27, 75, 0.9) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: var(--primary) !important;
+        border-right: none;
+    }
+
+    .input-group input.form-control {
+        border-left: none;
+    }
+
+    /* Placeholder text color */
+    .form-control::placeholder {
+        color: rgba(238, 242, 255, 0.5) !important;
+    }
+
+    /* File input styling */
+    input[type="file"] {
+        color: var(--light) !important;
+        background: rgba(30, 27, 75, 0.9) !important;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        color: var(--light);
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    input[type="file"]::-webkit-file-upload-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    /* For Firefox */
+    input[type="file"]::file-selector-button {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        color: var(--light);
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Form group spacing and labels */
+    .mb-3 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .form-label {
+        color: var(--light);
+        opacity: 0.9;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    /* Input group hover effects */
+    .input-group:hover input.form-control,
+    .input-group:hover .input-group-text {
+        border-color: var(--primary);
+    }
+
+    /* Add these styles */
+    .table-container {
+        background: rgba(30, 27, 75, 0.3);
+        border-radius: 16px;
+        padding: 1rem;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        backdrop-filter: blur(12px);
+    }
+
+    .table {
+        color: var(--light);
+        background: transparent !important;
+        margin-bottom: 0;
+    }
+
+    .table thead th {
+        background: rgba(30, 27, 75, 0.9) !important;
+        color: var(--primary);
+        border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+        padding: 1rem;
+        font-weight: 600;
+    }
+
+    .table tbody tr {
+        background: transparent !important;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .table tbody tr:hover {
+        background: rgba(30, 27, 75, 0.8) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+    }
+
+    .table tbody td {
+        color: var(--light) !important;
+        padding: 1rem;
+        vertical-align: middle;
+        border-color: rgba(99, 102, 241, 0.2);
+    }
+
+    /* Badge styles */
+    .badge {
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .bg-success {
+        background: rgba(16, 185, 129, 0.2) !important;
+        color: var(--success) !important;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .bg-warning {
+        background: rgba(245, 158, 11, 0.2) !important;
+        color: var(--warning) !important;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    /* Update table styles */
+    .table-container {
+        background: rgba(30, 27, 75, 0.3);
+        border-radius: 16px;
+        padding: 1rem;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        backdrop-filter: blur(12px);
+    }
+
+    .table-dark {
+        --bs-table-bg: transparent !important;
+        --bs-table-striped-bg: rgba(30, 27, 75, 0.5) !important;
+        --bs-table-hover-bg: rgba(30, 27, 75, 0.8) !important;
+        color: var(--light) !important;
+        border-color: rgba(99, 102, 241, 0.2);
+    }
+
+    .table-dark th {
+        background: rgba(30, 27, 75, 0.9) !important;
+        color: var(--primary);
+        border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+        padding: 1rem;
+        font-weight: 600;
+    }
+
+    .table-dark td {
+        color: var(--light) !important;
+        padding: 1rem;
+        vertical-align: middle;
+        border-color: rgba(99, 102, 241, 0.2);
+    }
+
+    .table-dark tr {
+        transition: all 0.3s ease;
+    }
+
+    .table-dark tr:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Add styles for sender name */
+    .sender-name {
+        color: var(--primary);
+        font-weight: 500;
+    }
+
+    /* Clean file input styling */
+    .input-group input[type="file"] {
+        color: var(--light) !important;
+        background: rgba(30, 27, 75, 0.9) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        padding: 0;
+    }
+
+    input[type="file"]::-webkit-file-upload-button,
+    input[type="file"]::file-selector-button {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        color: var(--light);
+        padding: 0.75rem 1.5rem;
+        margin-right: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    input[type="file"]::-webkit-file-upload-button:hover,
+    input[type="file"]::file-selector-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Style the "No file chosen" text */
+    input[type="file"]:not(:focus):not(:hover) {
+        color: rgba(238, 242, 255, 0.5) !important;
+    }
+
+    /* Container hover effect */
+    .input-group:hover input[type="file"] {
+        border-color: var(--primary);
+    }
+
+    /* File input container styling */
+    .input-group {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    /* File input styling */
+    .input-group input[type="file"] {
+        color: var(--light) !important;
+        background: rgba(30, 27, 75, 0.9) !important;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        padding: 0;
+        transition: all 0.3s ease;
+    }
+
+    /* Choose file button styling */
+    input[type="file"]::-webkit-file-upload-button,
+    input[type="file"]::file-selector-button {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        color: var(--light);
+        padding: 1rem 2rem;
+        margin-right: 1rem;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Button hover effects */
+    input[type="file"]::-webkit-file-upload-button:hover,
+    input[type="file"]::file-selector-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Container hover effects */
+    .input-group:hover input[type="file"] {
+        border-color: var(--primary);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+
+    /* No file chosen text styling */
+    input[type="file"] {
+        color: rgba(238, 242, 255, 0.7) !important;
+    }
+
+    /* Active state */
+    .input-group input[type="file"]:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Update recipient input styling */
+    .input-group {
+        background: rgba(30, 27, 75, 0.9);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .input-group-text {
+        background: transparent !important;
+        border: none !important;
+        color: var(--primary) !important;
+        padding-left: 1.5rem;
+    }
+
+    .input-group .form-control {
+        background: transparent !important;
+        border: none !important;
+        color: var(--light) !important;
+        padding: 0.75rem 1rem;
+        height: auto;
+    }
+
+    .input-group:hover {
+        border-color: var(--primary);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+
+    .input-group:focus-within {
+        border-color: var(--primary);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Update placeholder text */
+    .form-control::placeholder {
+        color: rgba(238, 242, 255, 0.5) !important;
+        font-size: 0.95rem;
+    }
+
+    /* Add these styles */
+    .received-files-container {
+        max-height: 400px; /* Match the height of upload section */
+        overflow-y: auto;
+        padding-right: 0.5rem;
+    }
+
+    /* Custom scrollbar styling */
+    .received-files-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .received-files-container::-webkit-scrollbar-track {
+        background: rgba(30, 27, 75, 0.5);
+        border-radius: 4px;
+    }
+
+    .received-files-container::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .received-files-container::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary);
+    }
+
+    /* Update file card styles */
+    .file-card {
+        background: rgba(30, 27, 75, 0.8);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        padding: 1rem;
+        border-radius: 12px;
+        margin-bottom: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .file-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--primary);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Last file card margin */
+    .file-card:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Add these styles to your existing CSS */
+    .btn-sm.btn-primary {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn-sm.btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Ensure table cells are properly aligned */
+    .table td {
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}

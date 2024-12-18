@@ -1,0 +1,7 @@
+flask>=2.0.0
+mysql-connector-python>=8.0.0
+pycryptodome>=3.10.0
+python-docx>=0.8.11
+PyPDF2>=2.0.0
+python-pptx>=0.6.21
+bcrypt>=3.2.0 

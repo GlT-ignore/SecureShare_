@@ -1,0 +1,433 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="signup-container page-content">
+    <div class="signup-card">
+        <div class="cyber-circle circle-1"></div>
+        <div class="cyber-circle circle-2"></div>
+
+        <div class="signup-header">
+            <h1 class="signup-title">Create Account</h1>
+            <p class="signup-subtitle">Join SecureShare_ to start sharing files securely</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('signup') }}" class="signup-form" id="signupForm">
+            <div class="form-floating">
+                <i class="fas fa-user input-icon"></i>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="username" 
+                    name="username" 
+                    placeholder=" "
+                    required
+                >
+                <label for="username">Username</label>
+            </div>
+
+            <div class="form-floating">
+                <i class="fas fa-lock input-icon"></i>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="password" 
+                    name="password" 
+                    placeholder=" "
+                    required
+                >
+                <label for="password">Password</label>
+            </div>
+
+            <div class="form-floating">
+                <i class="fas fa-lock input-icon"></i>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="confirm_password" 
+                    name="confirm_password" 
+                    placeholder=" "
+                    required
+                    oninput="validatePassword()"
+                >
+                <label for="confirm_password">Confirm Password</label>
+                <div class="password-mismatch" id="passwordMismatch">Passwords do not match</div>
+            </div>
+
+            <button type="submit" class="btn-login" id="submitBtn">
+                <i class="fas fa-user-plus me-2"></i>Sign Up
+            </button>
+
+            <div class="login-link">
+                Already have an account? <a href="{{ url_for('login') }}">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 140px);
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .signup-card {
+        width: 100%;
+        max-width: 400px;
+        background: rgba(30, 27, 75, 0.8);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        padding: 3rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+        z-index: 2;
+    }
+
+    .signup-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .signup-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+    }
+
+    .signup-subtitle {
+        color: var(--light);
+        opacity: 0.8;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0 auto;
+        max-width: 260px;
+    }
+
+    .signup-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+    }
+
+    .form-floating {
+        position: relative;
+        background: rgba(30, 27, 75, 0.9);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        overflow: visible;
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        background: transparent !important;
+        border: none !important;
+        color: var(--light) !important;
+        height: 56px;
+        padding: 1.25rem 1rem 0.5rem 3.5rem !important;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .form-floating label {
+        padding: 0.5rem 1rem 0.5rem 3.5rem;
+        color: rgba(238, 242, 255, 0.8);
+        font-size: 0.9rem;
+        transform-origin: 0 0;
+        transition: all 0.2s ease;
+        pointer-events: none;
+        background: none !important;
+    }
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        transform: scale(0.85) translateY(-0.5rem);
+        color: var(--primary);
+        opacity: 1;
+        background: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        z-index: 3;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary);
+        font-size: 1.1rem;
+        pointer-events: none;
+        opacity: 0.8;
+        z-index: 2;
+    }
+
+    .form-floating:hover,
+    .form-floating:focus-within {
+        border-color: var(--primary);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Remove any background from floating labels */
+    .form-floating label::before,
+    .form-floating label::after {
+        display: none !important;
+    }
+
+    /* Override Bootstrap's default styles */
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label,
+    .form-floating>.form-select~label {
+        background: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* Override autofill styles */
+    .form-floating input:-webkit-autofill ~ label {
+        background: none !important;
+    }
+
+    .form-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 12px;
+        color: var(--light);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        cursor: pointer;
+    }
+
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-login:disabled {
+        opacity: 0.7;
+        transform: none;
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+
+    .btn-login i {
+        font-size: 1.2rem;
+    }
+
+    .login-link {
+        text-align: center;
+        color: var(--light);
+        opacity: 0.9;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+    }
+
+    .login-link a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .login-link a:hover {
+        color: var(--accent);
+    }
+
+    .cyber-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--primary);
+        filter: blur(80px);
+        z-index: -1;
+        opacity: 0.15;
+        transition: all 0.8s ease;
+    }
+
+    .circle-1 {
+        width: 200px;
+        height: 200px;
+        top: -100px;
+        right: -100px;
+    }
+
+    .circle-2 {
+        width: 250px;
+        height: 250px;
+        bottom: -125px;
+        left: -125px;
+        background: var(--accent);
+    }
+
+    .signup-card:hover .circle-1 {
+        transform: scale(1.2) translateX(-20px);
+    }
+
+    .signup-card:hover .circle-2 {
+        transform: scale(1.2) translateX(20px);
+    }
+
+    .flash-messages {
+        margin-bottom: 2rem;
+    }
+
+    .alert {
+        background: rgba(30, 27, 75, 0.9);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: var(--light);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .alert-success {
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .alert-error {
+        border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-close {
+        background: none;
+        border: none;
+        color: var(--light);
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+
+    .btn-close:hover {
+        opacity: 1;
+    }
+
+    .password-mismatch {
+        color: #EF4444;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+        display: none;
+        position: absolute;
+        bottom: -1.5rem;
+        left: 0;
+    }
+
+    /* Remove all other button styles */
+    .login-btn, .cybr-btn, .btn-signup, .signup-button {
+        display: none !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get form element
+        const signupForm = document.getElementById('signupForm');
+        
+        // Add form submit handler
+        signupForm.addEventListener('submit', function(e) {
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm_password');
+            
+            // Prevent form submission if passwords don't match
+            if (password.value !== confirmPassword.value) {
+                e.preventDefault(); // Stop form submission
+                const mismatchMessage = document.getElementById('passwordMismatch');
+                mismatchMessage.style.display = 'block';
+                confirmPassword.setCustomValidity("Passwords do not match");
+                return false;
+            }
+        });
+
+        // Password validation function
+        function validatePassword() {
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm_password');
+            const mismatchMessage = document.getElementById('passwordMismatch');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (password.value !== confirmPassword.value) {
+                mismatchMessage.style.display = 'block';
+                submitBtn.disabled = true;
+                confirmPassword.setCustomValidity("Passwords do not match");
+            } else {
+                mismatchMessage.style.display = 'none';
+                submitBtn.disabled = false;
+                confirmPassword.setCustomValidity("");
+            }
+        }
+
+        // Add event listeners for both password fields
+        document.getElementById('password').addEventListener('input', validatePassword);
+        document.getElementById('confirm_password').addEventListener('input', validatePassword);
+
+        // GSAP animations
+        const tl = gsap.timeline({
+            defaults: { ease: 'power2.out' }
+        });
+
+        tl.from('.signup-card', {
+            duration: 1,
+            y: 50,
+            opacity: 0
+        })
+        .from('.signup-title, .signup-subtitle', {
+            duration: 0.8,
+            y: 20,
+            opacity: 0,
+            stagger: 0.2
+        }, '-=0.5')
+        .from('.form-floating', {
+            duration: 0.8,
+            y: 20,
+            opacity: 0,
+            stagger: 0.15
+        }, '-=0.3')
+        .from('.signup-btn, .login-link', {
+            duration: 0.8,
+            y: 20,
+            opacity: 0,
+            stagger: 0.15
+        }, '-=0.3');
+    });
+
+    // Auto-hide flash messages after 5 seconds
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 5000);
+    });
+</script>
+{% endblock %} 
